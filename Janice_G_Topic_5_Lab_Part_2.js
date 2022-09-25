@@ -241,7 +241,7 @@ let physicsLaureates = listOfprizes[0].laureates
 console.log(physicsLaureates)
 
 
-
+// HAVE NOT DONE YET:
 // TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
 // TODO write code to print the total number of prize categories
 // TODO write code to count the total number of laureates from 2017.
