@@ -128,10 +128,9 @@
 
     // TODO - If there are no errors, use a template string to display an order
     // summary in the order summary paragraph.
-    //NOT WORKING:
     if (errors.length === 0) {
       let orderSummary = `${name}, ${houseNumber} ${streetName}, ${city}, MN, ${zipCode}, ${treeType}`
-      document.getElementsByClassName("order-summary").innerHTML = orderSummary
+      orderSummaryParagraph.innerHTML = orderSummary
     }
 
   })

@@ -53,20 +53,20 @@ message = `The value of ${euros} Euros is ${AUDvalue.toFixed(2)} Australion Doll
 console.log(message)
 
 // TODO write code to identify the currency symbol that has the highest exchange rate compared to Euros.
-
 //    In other words, identify the property with the largest value. the answer is BRL (Brazilian Real) at 3.8959 BRL to 1 Euro.
 
-
-// this doesn't work
-const keys = Object.keys(rates)
+const keys = Object.keys(rates)  // create an array of keys to loop through
 console.log(keys)
-let initialKey = keys[0]
-keys.forEach(function(key) {
-    if (key >= initialKey) {
-        initialKey = key
+let highestKey = keys[0]   // assume first value is the highest value
+let highestValue = rates[highestKey]  //get the value for this key
+keys.forEach(function(key) {  // loop through the keys
+    let value = rates[key]
+    if (value >= highestValue) {
+        highestValue = value
+        highestKey = key
     }}
 )
-console.log(initialKey)
+console.log('The highest rate is ' + highestKey + ' and the rate is ' + highestValue)
 
 /* c. Use this JavaScript array of objects of cat owners, and their cats. Source, moderncat.com
  */
@@ -235,13 +235,34 @@ let firstName = laureates[0].firstname
 let lastName = laureates[0].surname
 console.log('The winner of the Literature Nobel is ' + firstName + ' ' + lastName)
 
-// NOT WORKING:
 // TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
-let physicsLaureates = listOfprizes[0].laureates
+let physicsLaureates = listOfprizes[0].laureates // create an array of Physics Laureates
 console.log(physicsLaureates)
-
+// each object = laureate
+console.log('The Physics ids are:')
+physicsLaureates.forEach(function(laureate) {
+    let laureateId = laureate.id
+    console.log(laureateId)
+})
 
 // HAVE NOT DONE YET:
 // TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
 // TODO write code to print the total number of prize categories
+let numberOfCategories = 0
+console.log('The prize categories are:')
+listOfprizes.forEach(function(prize) {
+    let category = prize.category
+    console.log(category)
+    numberOfCategories++
+})
+console.log('The number of categories are: ' + numberOfCategories)
+
 // TODO write code to count the total number of laureates from 2017.
+let numberOfLaureates = 0
+listOfprizes.forEach(function(laureate) {
+    let arrayOfLaureates = laureate.laureates  //get an array of the categories
+    arrayOfLaureates.forEach(function(laureate) { //loop through each category
+        numberOfLaureates++ // total number of laureates
+    })
+})
+console.log('The number of laureates are: ' + numberOfLaureates)
