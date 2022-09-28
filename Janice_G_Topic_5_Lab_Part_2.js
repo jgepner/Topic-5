@@ -19,9 +19,7 @@ let iss_location = {
 
 // TODO Extract the latitude value, and log it to the console.
 // TODO Extract the longitude value, and log it to the console.
-// console.log(iss_location)
 let position = iss_location.iss_position
-console.log(position)
 let lattitude = position.latitude
 console.log('The lattitude is ' + lattitude)
 let longitude = iss_location.iss_position.longitude
@@ -31,7 +29,6 @@ console.log('The longitude is ' + longitude)
 The properties are currency symbols, the values are the exchange rates.
 Data source: http://fixer.io/
 * */
-
 
 let rates = {
     "AUD": 1.5417,
@@ -62,8 +59,8 @@ let highestValue = rates[highestKey]  //get the value for this key
 keys.forEach(function(key) {  // loop through the keys
     let value = rates[key]
     if (value >= highestValue) {
-        highestValue = value
-        highestKey = key
+        highestValue = value   // save this value if it's higher or equal
+        highestKey = key   // key for highest value
     }}
 )
 console.log('The highest rate is ' + highestKey + ' and the rate is ' + highestValue)
@@ -80,8 +77,8 @@ let cats_and_owners = [
 
 // TODO print Gary Oldman's cat's name
 // console.log(cats_and_owners["Gary Oldman"])
-let garyPair = cats_and_owners[1]
-let garyCat = garyPair.cat
+let garyPair = cats_and_owners[1]    // Save the second pair
+let garyCat = garyPair.cat   // retrieve Gary's cat
 console.log("Gary Oldman's Cat is " + garyCat)
 
 // TODO Taylor Swift's cat is called 'Meredith'. Write code to add this data to the array.
@@ -91,9 +88,9 @@ console.log(cats_and_owners)
 // TODO write a loop to print each cat owner, and their cat's name, one per line. Use the forEach style.
 //   Each line should have a message like "Snoop Dogg's cat is called Miles Davis"
 cats_and_owners.forEach( function (pair, index) {
-    let owner = cats_and_owners[index].name
-    let cat = cats_and_owners[index].cat
-    console.log(`${owner}'s cat is called ${cat}`)
+    let owner = cats_and_owners[index].name   // get each name one at a time
+    let cat = cats_and_owners[index].cat     // get cat's name
+    console.log(`${owner}'s cat is called ${cat}`)  // print each result
 })
 
 /* d. Use the following JSON object, describing the Nobel Prize winners in 2017.
@@ -228,38 +225,37 @@ let nobel_prize_winners_2017 = {
 }
 
 // TODO print the full name of the Literature Nobel laureate.
-let listOfprizes = nobel_prize_winners_2017.prizes
-let literaturePrize = listOfprizes[3]
-let laureates = literaturePrize.laureates
-let firstName = laureates[0].firstname
-let lastName = laureates[0].surname
+let listOfprizes = nobel_prize_winners_2017.prizes  // save prizes as an array
+let literaturePrize = listOfprizes[3]  // save the literature prize object (4th prize)
+let laureates = literaturePrize.laureates  // get the laureates array
+let firstName = laureates[0].firstname  // get the first name from the object in the array
+let lastName = laureates[0].surname  // get the surname from the object in the array
 console.log('The winner of the Literature Nobel is ' + firstName + ' ' + lastName)
 
 // TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
 let physicsLaureates = listOfprizes[0].laureates // create an array of Physics Laureates
-console.log(physicsLaureates)
+// console.log(physicsLaureates)
 // each object = laureate
 console.log('The Physics ids are:')
-physicsLaureates.forEach(function(laureate) {
-    let laureateId = laureate.id
+physicsLaureates.forEach(function(laureate) {  //loop thru physics laureates
+    let laureateId = laureate.id   // get the id value
     console.log(laureateId)
 })
 
-// HAVE NOT DONE YET:
 // TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
 // TODO write code to print the total number of prize categories
-let numberOfCategories = 0
+let numberOfCategories = 0  // define a variable to count the number of prizes
 console.log('The prize categories are:')
-listOfprizes.forEach(function(prize) {
-    let category = prize.category
+listOfprizes.forEach(function(prize) { // loop through the array of prizes
+    let category = prize.category  // retrieve the category
     console.log(category)
-    numberOfCategories++
+    numberOfCategories++  // count the number of categores
 })
 console.log('The number of categories are: ' + numberOfCategories)
 
 // TODO write code to count the total number of laureates from 2017.
-let numberOfLaureates = 0
-listOfprizes.forEach(function(laureate) {
+let numberOfLaureates = 0   // define a variable to count the number of laureates
+listOfprizes.forEach(function(laureate) {   // loop through the array of prizes
     let arrayOfLaureates = laureate.laureates  //get an array of the categories
     arrayOfLaureates.forEach(function(laureate) { //loop through each category
         numberOfLaureates++ // total number of laureates
